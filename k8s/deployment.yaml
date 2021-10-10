@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keystore
+  labels:
+    app: keystore
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: keystore
+  template:
+    metadata:
+      labels:
+        app: keystore
+    spec:
+      containers:
+      - name: keystore
+        image: docker.io/vivekanandham/dev:keystore
+        ports:
+        - containerPort: 5000
+      restartPolicy: Always
